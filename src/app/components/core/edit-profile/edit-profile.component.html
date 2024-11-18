@@ -1,0 +1,78 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">Edit profile</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div id="editProfileModal" class="modal-body">
+  <form id="editprofileform" #f="ngForm" [formGroup]="editProfileForm">
+    <div class="form-group">
+      <input [formControl]="editProfileForm.get('userId')" type="text" class="form-control" name="userid"
+             ngModel [ngModel]="user.id" [attr.disabled]="true">
+    </div>
+    <div class="form-group">
+      <input [formControl]="editProfileForm.get('accountId')" type="text" class="form-control" name="accountid"
+             ngModel [ngModel]="accountId" [attr.disabled]="true">
+    </div>
+    <div class="form-group">
+      <div class="row">
+        <div class="col-sm">
+          <label>
+            <input [formControl]="editProfileForm.get('personal').get('firstName')" [ngModel]="account.firstName"
+                   type="text" #firstname class="form-control" name="editFirstname" placeholder="First Name"
+                   ngModel>
+          </label>
+        </div>
+        <div class="col-sm">
+          <label>
+            <input [formControl]="editProfileForm.get('personal').get('lastName')" [ngModel]="account.lastName" type="text"
+                   #lastname
+                   class="form-control" name="editLastname" placeholder="Last Name"
+                   ngModel>
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <input [formControl]="editProfileForm.get('email')" [ngModel]="user.email" type="email" class="form-control"
+             #email name="email" placeholder="Email" ngModel>
+    </div>
+    <div class="form-group">
+      <label for="gender">Gender</label>
+      <select [formControl]="editProfileForm.get('personal').get('gender')" [ngModel]="account.gender" id="gender"
+              #gender class="form-control" name="gender">
+        <option name="gender-list">
+          Male
+        </option>
+        <option name="gender-list">
+          Female
+        </option>
+      </select>
+    </div>
+    <div class="form-group">
+      <input [formControl]="editProfileForm.get('personal').get('dateOfBirth')"
+             [ngModel]="account.dateOfBirth | date:'yyyy-MM-dd'" type="date" class="form-control" name="dateOfBirth"
+             #dateofbirth placeholder="Date of Birth" ngModel>
+    </div>
+    <div class="form-group">
+      <input [formControl]="editProfileForm.get('address').get('country')" [ngModel]="account.country" type="text"
+             #country class="form-control" name="country" placeholder="Country" ngModel>
+    </div>
+    <div class="form-group">
+      <input [formControl]="editProfileForm.get('address').get('phoneNumber')" [ngModel]="account.phoneNumber" type="text"
+             #phonenumber class="form-control" name="phoneNumber" placeholder="Phone number"
+             ngModel>
+    </div>
+    <div class="form-group">
+      <input [formControl]="editProfileForm.get('password')" type="password" class="form-control" name="password"
+             placeholder="Password" ngModel>
+    </div>
+    <hr>
+    <button
+      [disabled]="(firstname.value === user.firstName && lastname.value === user.lastName && email.value === user.email && gender.value === user.gender && country.value === user.country && phonenumber.value === user.phoneNumber)  || (!f.valid)"
+      (click)="passBackProfileChanges()" id="saveEditProfileChangesBtn" type="submit" class="btn btn-primary w-100">Save
+      changes
+    </button>
+  </form>
+</div>
+

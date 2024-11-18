@@ -1,0 +1,45 @@
+<div class="container">
+  <br>
+  <app-alert></app-alert>
+  <div class="card mt-5 border-5 pt-2 active pb-0 px-3">
+    <div class="card-body ">
+      <form id="createPostForm" #f="ngForm" [formGroup]="createPostForm" (ngSubmit)="onCreatePost()">
+        <div class="row">
+          <div class="col-md-7">
+            <textarea class="form-control form-control-lg mb-3" ngModel name="content" rows="3" [formControl]="createPostForm.get('content')" [maxLength]="maxContentLength" placeholder="What's on your mind {{ currAccount.firstName }}?"></textarea>
+          </div>
+          <div class="col-md-5">
+            <div class="input-group mb-2">
+              <div class="input-group-prepend">
+                <div class="input-group-text">
+                  @
+                </div>
+              </div>
+              <input type="text" class="form-control" id="postUserTag" placeholder="Tag user">
+            </div>
+            <br>
+            <div class="input-group mb-2">
+              <div class="input-group-prepend">
+                <div class="input-group-text">
+                  @
+                </div>
+              </div>
+              <input type="text" class="form-control" id="postLocation" placeholder="Add location">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-2">
+            <button [disabled]="!f.valid" id="postBtn" type="submit" class="btn btn-success btn-lg btn-block">Post</button>
+          </div>
+        </div>
+      </form>
+<!--      <div class="col-md-2">-->
+<!--        <button [disabled]="!f.valid" id="cancelPostButton" type="submit" class="btn btn-danger btn-lg btn-block">Cancel</button>-->
+<!--      </div>-->
+    </div>
+  </div>
+</div>
+<div id="post-entries" class="container">
+  <app-post *ngFor="let post of posts" [post]="post"></app-post>
+</div>

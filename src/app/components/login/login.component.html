@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row">
+    <div class="login-form">
+      <div class="text-center" *ngIf="loading">
+        <app-loading-spinner></app-loading-spinner>
+      </div>
+      <div id="failure" class="alert alert-danger" *ngIf="failure && !loading">
+        {{ message }}
+      </div>
+      <div id="success" class="alert alert-success" *ngIf="success && !loading">
+        {{ message }}
+      </div>
+      <form id="loginform" #f="ngForm" (ngSubmit)="onLogin(f)" *ngIf="!loading">
+        <h2>Log In</h2>
+        <p class="hint-text">Log In with your personal account</p>
+        <div class="form-group">
+          <input type="email" class="form-control" name="email" placeholder="Email" required ngModel>
+        </div>
+        <div class="form-group">
+          <input type="password" class="form-control" name="password" placeholder="Password" required ngModel>
+        </div>
+        <hr>
+        <div class="form-group">
+          <button id="loginBtn" [disabled]="!f.valid" type="submit" class="btn btn-success btn-lg btn-block">Log In</button>
+        </div>
+      </form>
+      <div class="text-center" *ngIf="!loading">
+        Don't have an account yet?
+        <a id="switchToRegister" routerLink="/register">
+          Register here!
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+

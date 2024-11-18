@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="card mt-5 border-5 pt-2 active pb-0 px-3">
+    <div class="card-body ">
+      <div class="row">
+        <div class="col">
+          <h6 class="card-subtitle mb-2 text-muted">
+            <p class="card-text text-muted small "> <img src="https://img.icons8.com/metro/26/000000/heart.png" class="mr-1 " width="19" height="19" id="star"> <span class="vl mr-2 ml-0"></span> Created by <span class="font-weight-bold"> {{ post.post.accountId }}</span> on {{ post.post.postDate | date}}</p>
+          </h6>
+        </div>
+        <hr>
+        <div class="col-12 ">
+          <h5 class="card-title"><b>{{ post.post.content }}</b></h5>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer bg-white px-0 ">
+      <div class="row">
+        <div class=" col-md-auto ">
+          <a  class="btn btn-outlined btn-black text-muted bg-transparent" data-wow-delay="0.7s"><img src="https://img.icons8.com/windows/32/000000/comment-medical.png" width="19" height="19"> <small>  COMMENT</small></a> <i class="mdi mdi-settings-outline"></i>
+        </div>
+        <div class=" col-md-auto " *ngIf="post.post.accountId === accountId">
+          <a id="editPostBtn" class="btn btn-outlined btn-black text-muted bg-transparent" (click)="onEditPost()" data-wow-delay="0.7s"><img src="https://img.icons8.com/android/26/000000/edit.png" width="19" height="19"> <small>  EDIT</small></a> <i class="mdi mdi-settings-outline"></i>
+        </div>
+        <div class=" col-md-auto " *ngIf="post.post.accountId === accountId">
+          <a  id="deletePostBtn" class="btn btn-outlined btn-black text-muted bg-transparent" (click)="onDeletePost()" data-wow-delay="0.7s"><img src="https://img.icons8.com/android/26/000000/delete.png" width="19" height="19"> <small>  DELETE</small></a> <i class="mdi mdi-settings-outline"></i>
+        </div>
+        <div class=" col-md-auto ">
+          <a class="btn btn-outlined btn-black text-muted bg-transparent" data-wow-delay="0.7s"><img src="https://img.icons8.com/android/26/000000/share.png" width="19" height="19"> <small>  SHARE</small></a> <i class="mdi mdi-settings-outline"></i>
+        </div>
+        <div class=" col-md-auto ">
+          <a class="btn btn-outlined btn-black text-muted bg-transparent" data-wow-delay="0.7s"><img src="https://img.icons8.com/metro/26/000000/system-report.png" width="19" height="19"> <small>  REPORT</small></a> <i class="mdi mdi-settings-outline"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

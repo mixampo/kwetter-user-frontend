@@ -1,0 +1,26 @@
+<div id="editPostModal" class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">Edit post</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <textarea [ngModel]="post.post.content" class="form-control form-control-lg mb-3" #contentInput name="editPostContent" rows="3"  [maxLength]="maxContentLength" placeholder="Post content"></textarea>
+  <div class="input-group mb-2">
+    <div class="input-group-prepend">
+      <div class="input-group-text">
+        @
+      </div>
+    </div>
+    <input type="text" class="form-control" id="editPostUserTag" placeholder="Tag user" ngModel>
+  </div>
+  <div class="input-group mb-2">
+    <div class="input-group-prepend">
+      <div class="input-group-text">
+        @
+      </div>
+    </div>
+    <input type="text" class="form-control" id="editPostLocation" placeholder="Add location" ngModel>
+  </div>
+  <button id="saveEditPostChangesBtn" [disabled]="contentInput.value === post.post.content" (click)="passBackPostChanges(contentInput.value)"  type="submit" class="btn btn-primary w-100">Save changes</button>
+</div>

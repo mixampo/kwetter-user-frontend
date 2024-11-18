@@ -1,0 +1,64 @@
+<div class="signup-form">
+  <div class="text-center" *ngIf="loading">
+    <app-loading-spinner></app-loading-spinner>
+  </div>
+  <div id="registrationFailure" class="alert alert-danger" *ngIf="error">
+    User with specified e-mail address already exists, please use a differen e-mail address
+  </div>
+  <form id="signupform" #f="ngForm" [formGroup]="registrationForm" (ngSubmit)="onRegistration()" *ngIf="!loading">
+    <h2>Sign up</h2>
+    <p class="hint-text">Create your account. It's free and only takes a minute.</p>
+    <div class="form-group">
+      <div class="row">
+        <div class="col-sm">
+          <label>
+            <input type="text" class="form-control" name="firstname" placeholder="First Name" ngModel [formControl]="registrationForm.get('personal').get('firstName')">
+          </label>
+        </div>
+        <div class="col-sm">
+          <label>
+            <input type="text" class="form-control" name="lastname" placeholder="Last Name" ngModel [formControl]="registrationForm.get('personal').get('lastName')">
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <input type="email" class="form-control" name="email" placeholder="Email"  ngModel [formControl]="registrationForm.get('email')">
+    </div>
+    <div class="form-group">
+      <label for="gender">Gender</label>
+      <select id="gender" class="form-control" name="gender" [formControl]="registrationForm.get('personal').get('gender')">
+        <option name="gender-list">
+          Male
+        </option>
+        <option name="gender-list">
+          Female
+        </option>
+      </select>
+    </div>
+    <div class="form-group">
+      <input type="date" class="form-control" name="dateOfBirth" placeholder="Date of Birth" ngModel [formControl]="registrationForm.get('personal').get('dateOfBirth')">
+    </div>
+    <div class="form-group">
+      <input type="text" class="form-control" name="country" placeholder="Country" ngModel [formControl]="registrationForm.get('address').get('country')">
+    </div>
+    <div class="form-group">
+      <input type="text" class="form-control" name="phoneNumber" placeholder="Phone number" ngModel [formControl]="registrationForm.get('address').get('phoneNumber')">
+    </div>
+    <div class="form-group">
+      <input type="password" class="form-control" name="password" placeholder="Password" ngModel [formControl]="registrationForm.get('password')">
+    </div>
+    <hr>
+    <div class="form-group">
+      <button [disabled]="!f.valid" id="registerBtn" type="submit" class="btn btn-success btn-lg btn-block">Register
+        Now
+      </button>
+    </div>
+  </form>
+  <div class="text-center" *ngIf="!loading">
+    Already have an account?
+    <a id="switchToLogin" routerLink="/login">
+      Log In
+    </a>
+  </div>
+</div>

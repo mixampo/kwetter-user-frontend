@@ -1,0 +1,19 @@
+<div id="deletePostModal" class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">Delete post</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <h5>Are you sure you want to delete this post?</h5>
+  <h6>This action cannot be undone</h6>
+  <br>
+  <div class="row">
+    <div class="col-sm-6">
+      <button id="deletePostYesConfirmationBtn" (click)="passBackDeletePostConfirmation()"  type="submit" class="btn btn-success w-50">Yes</button>
+    </div>
+    <div class="col-sm-6">
+      <button id="deletePostNoConfirmationBtn" (click)="passBackDeletePostCancel()"  type="submit" class="btn btn-danger w-50">No</button>
+    </div>
+  </div>
+</div>
